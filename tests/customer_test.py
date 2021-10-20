@@ -18,9 +18,10 @@ class TestCustomer(unittest.TestCase):
         self.assertEqual(5, self.customer.drunkenness)
 
     def test_customer_can_buy_drink(self):
-        drink = Drink("wine", 4.50, 4)
+        drink = Drink("wine", 4.50, 5)
         self.customer.buy_drink(drink)
         self.assertEqual(5.50, self.customer.wallet)
+        self.assertEqual(10, self.customer.drunkenness)
     
     def test_customer_has_age(self):
         self.assertEqual(24, self.customer.age)

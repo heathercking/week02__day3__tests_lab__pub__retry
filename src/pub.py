@@ -11,9 +11,12 @@ class Pub:
         self.drinks.append(drink)
     
     def serve_drink(self, drink, customer):
-        if self.customer_is_old_enough(customer) == True:
+        if self.customer_is_old_enough(customer) == True and self.customer_is_too_drunk == True:
             customer.buy_drink(drink)
             self.till += drink.price
     
     def customer_is_old_enough(self, customer):
         return customer.age >= 18
+    
+    def customer_is_too_drunk(self, customer):
+        return customer.drunkenness >= 30

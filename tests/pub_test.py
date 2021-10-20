@@ -10,6 +10,7 @@ class TestPub(unittest.TestCase):
         self.drink2 = Drink("beer", 3.50, 5)
         self.customer_1 = Customer("Frodo", 10.00, 24, 5)
         self.customer_2 = Customer("Pippin", 20.00, 17, 0)
+        self.customer_3 = Customer("Samwise", 15.00, 18, 40)
 
     def test_pub_has_name(self):
         self.assertEqual("The Prancing Pony", self.pub.name)
@@ -31,10 +32,21 @@ class TestPub(unittest.TestCase):
         self.assertEqual(20.00, self.customer_2.wallet)
         self.assertEqual(100.00, self.pub.till)
 
+    def test_cannot_serve_drink__too_drunk(self):
+        self.pub.serve_drink(self.drink1, self.customer_3)
+        self.assertEqual(15.00, self.customer_3.wallet)
+        self.assertEqual(100.00, self.pub.till)
+        
     def test_customer_is_old_enough(self):
         self.assertEqual(True, self.pub.customer_is_old_enough(self.customer_1))
     
     def test_customer_is_not_old_enough(self):
         self.assertEqual(False, self.pub.customer_is_old_enough(self.customer_2))
+    
+    def test_customer_drunkenness__not_too_drunk(self):
+        self.assertEqual(False, self.pub.customer_is_too_drunk(self.customer_1))
+    
+    def test_customer_drunkenness__too_drunk(self):
+        self.assertEqual(True, self.pub.customer_is_too_drunk(self.customer_3))
 
 

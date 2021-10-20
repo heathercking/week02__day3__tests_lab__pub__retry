@@ -8,3 +8,4 @@ class Customer:
     
     def buy_drink(self, drink):
         self.wallet -= drink.price
+        self.drunkenness += drink.alcohol_level
