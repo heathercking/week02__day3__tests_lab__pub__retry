@@ -36,7 +36,7 @@ class TestPub(unittest.TestCase):
         self.pub.serve_drink(self.drink1, self.customer_3)
         self.assertEqual(15.00, self.customer_3.wallet)
         self.assertEqual(100.00, self.pub.till)
-        
+
     def test_customer_is_old_enough(self):
         self.assertEqual(True, self.pub.customer_is_old_enough(self.customer_1))
     
