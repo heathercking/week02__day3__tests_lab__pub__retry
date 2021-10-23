@@ -28,3 +28,5 @@ class Pub:
             return False
         return True
 
+    def increase_stock_level(self, input_drink, input_quantity):
+        input_drink.stock_level += input_quantity

@@ -6,8 +6,8 @@ from src.customer import Customer
 class TestPub(unittest.TestCase):
     def setUp(self):
         self.pub = Pub("The Prancing Pony", 100.00)
-        self.drink1 = Drink("wine", 4.50, 5)
-        self.drink2 = Drink("beer", 3.50, 5)
+        self.drink1 = Drink("wine", 4.50, 5, 10)
+        self.drink2 = Drink("beer", 3.50, 5, 20)
         self.customer_1 = Customer("Frodo", 10.00, 24, 5)
         self.customer_2 = Customer("Pippin", 20.00, 17, 0)
         self.customer_3 = Customer("Samwise", 15.00, 18, 40)
@@ -48,5 +48,12 @@ class TestPub(unittest.TestCase):
     
     def test_customer_drunkenness__too_drunk(self):
         self.assertEqual(True, self.pub.customer_is_too_drunk(self.customer_3))
+    
+    def test_increase_stock_level_of_drink(self):
+        self.pub.add_drink(self.drink1)
+        self.pub.increase_stock_level(self.drink1, 1)
+        self.assertEqual(11, self.drink1.stock_level)
+
+    
 
 
